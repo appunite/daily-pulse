@@ -1,0 +1,11 @@
+[project]
+name = "daily-pulse"
+version = "1.0.0"
+description = "Automation for transforming documents with LLM AI"
+dependencies = [
+    "flask",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
