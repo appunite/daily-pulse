@@ -4,6 +4,7 @@ import os
 from flask import Flask
 from daily_pulse.handler import handler
 from daily_pulse.config import ProdConfig
+from daily_pulse.utils.instances import instances
 
 def create_app(config_object=ProdConfig):
     app = Flask(__name__.split('.')[0], instance_relative_config=True)
@@ -16,5 +17,6 @@ def create_app(config_object=ProdConfig):
         pass
 
     handler(app)
+    instances(app)
 
     return app
