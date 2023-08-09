@@ -39,7 +39,15 @@ Write a catchy sentence informing that there were no decisions yesterday and eng
 
 """
 
-SUMMARIZE_SINGLE_LONG_PROMPT = PromptTemplate(template=SUMMARIZE_SINGLE_LONG_PROMPT_TEMPLATE, input_variables=["text"])
-SUMMARIZE_SINGLE_SHORT_PROMPT = PromptTemplate(template=SUMMARIZE_SINGLE_SHORT_PROMPT_TEMPLATE, input_variables=["text"])
-SUMMARIZE_CTA_DAY_PROMPT = PromptTemplate(template=SUMMARIZE_CTA_DAY_PROMPT_TEMPLATE, input_variables=[])
-SUMMARIZE_NO_DOCUMENTS_CTA_PROMPT = PromptTemplate(template=SUMMARIZE_NO_DOCUMENTS_CTA_TEMPLATE, input_variables=[])
+SUMMARIZE_SINGLE_LONG_PROMPT = PromptTemplate(
+    template=SUMMARIZE_SINGLE_LONG_PROMPT_TEMPLATE, input_variables=["text"]
+)
+SUMMARIZE_SINGLE_SHORT_PROMPT = PromptTemplate(
+    template=SUMMARIZE_SINGLE_SHORT_PROMPT_TEMPLATE, input_variables=["text"]
+)
+SUMMARIZE_CTA_DAY_PROMPT = PromptTemplate(
+    template=SUMMARIZE_CTA_DAY_PROMPT_TEMPLATE, input_variables=[]
+)
+SUMMARIZE_NO_DOCUMENTS_CTA_PROMPT = PromptTemplate(
+    template=SUMMARIZE_NO_DOCUMENTS_CTA_TEMPLATE, input_variables=[]
+)
