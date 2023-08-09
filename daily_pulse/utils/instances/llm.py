@@ -1,11 +1,14 @@
 import os
 from langchain.llms import OpenAI
+from langchain import LLMChain
 
-llm = None
-llm_creative = None
+from daily_pulse.utils.prompts.summarize import SUMMARIZE_SINGLE_LONG_PROMPT, SUMMARIZE_SINGLE_SHORT_PROMPT, SUMMARIZE_CTA_DAY_PROMPT, SUMMARIZE_NO_DOCUMENTS_CTA_PROMPT
+from daily_pulse.config import config
 
-def initLLM(app):
-    global llm, llm_creative
+llm = OpenAI(temperature=int(config['LLM_TEMP']))
+llm_creative = OpenAI(temperature=int(config['LLM_CREATIVE_TEMP']))
 
-    llm = OpenAI(temperature=int(app.config.get("LLM_TEMP")))
-    llm_creative = OpenAI(temperature=int(app.config.get("LLM_CREATIVE_TEMP")))
+summarize_individual_long_chain = LLMChain(llm=llm, prompt=SUMMARIZE_SINGLE_LONG_PROMPT)
+summarize_individual_short_chain = LLMChain(llm=llm, prompt=SUMMARIZE_SINGLE_SHORT_PROMPT)
+summarize_cta_day_chain = LLMChain(llm=llm_creative, prompt=SUMMARIZE_CTA_DAY_PROMPT)
+summarize_no_documents_chain = LLMChain(llm=llm_creative, prompt=SUMMARIZE_NO_DOCUMENTS_CTA_PROMPT)

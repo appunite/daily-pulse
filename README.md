@@ -19,5 +19,5 @@ pip install -r requirements.txt
 
 4. Run the app
 ```
-flask run
+functions-framework --target daily_pulse --debug
 ```
