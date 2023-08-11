@@ -10,4 +10,19 @@ def daily_pulse(request) -> str:
     if not request.headers.get("Authorization") == f"Bearer {config['AUTH_CODE']}":
         return "Authorization header invalid", 403
 
+    if request.method == "OPTIONS":
+        headers = {
+            "Access-Control-Allow-Origin": config["ORIGIN_DOMAIN"],
+            "Access-Control-Allow-Methods": "POST",
+            "Access-Control-Allow-Headers": "Authorization",
+            "Access-Control-Max-Age": "3600",
+            "Access-Control-Allow-Credentials": "true",
+        }
+        return ("", 204, headers)
+
+    headers = {
+        "Access-Control-Allow-Origin": config["ORIGIN_DOMAIN"],
+        "Access-Control-Allow-Credentials": "true",
+    }
+
     return asyncio.run(handler(request))
