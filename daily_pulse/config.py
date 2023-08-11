@@ -14,4 +14,5 @@ config = {
     "LLM_CREATIVE_TEMP": os.environ.get("LLM_CREATIVE_TEMP", 1),
     "GET_PAGE_CONTENT_HOOK": os.environ.get("GET_PAGE_CONTENT_HOOK"),
     "AUTH_CODE": os.environ.get("AUTH_CODE"),
+    "ORIGIN_DOMAIN": os.environ.get("ORIGIN_DOMAIN"),
 }
