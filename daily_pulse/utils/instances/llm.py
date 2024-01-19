@@ -10,8 +10,10 @@ from daily_pulse.utils.prompts.summarize import (
 )
 from daily_pulse.config import config
 
-llm = OpenAI(temperature=int(config["LLM_TEMP"]))
-llm_creative = OpenAI(temperature=int(config["LLM_CREATIVE_TEMP"]))
+llm = OpenAI(temperature=int(config["LLM_TEMP"]), model_name="gpt-3.5-turbo")
+llm_creative = OpenAI(
+    temperature=int(config["LLM_CREATIVE_TEMP"]), model_name="gpt-3.5-turbo"
+)
 
 summarize_individual_long_chain = LLMChain(llm=llm, prompt=SUMMARIZE_SINGLE_LONG_PROMPT)
 summarize_individual_short_chain = LLMChain(
