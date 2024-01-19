@@ -1,5 +1,6 @@
 import requests
 from langchain.docstore.document import Document
+from glom import glom
 
 from daily_pulse.config import config
 from daily_pulse.utils.text.markdown import (
@@ -13,8 +14,8 @@ def getStandarizedPageInfo(pageObject):
         "id": pageObject["id"],
         "url": pageObject["url"],
         "name": pageObject["properties_value"]["Name"][0]["plain_text"],
-        "type": pageObject["properties_value"]["Type"]["name"],
-        "status": pageObject["properties_value"]["Status"]["name"],
+        "type": glom(pageObject, "properties_value.Type.name", default=""),
+        "status": glom(pageObject, "properties_value.Status.name", default=""),
     }
 
 
