@@ -1,7 +1,8 @@
 """Notion data to shortened text handler"""
+
 from daily_pulse.utils.page import getPageWithDocument
 from daily_pulse.utils.slack import sendMessageToChannel
-from daily_pulse.utils.summarize import getSummarizedAllDayMessage
+from daily_pulse.utils.summarize_plain import getSummarizedAllDayMessageWithPlainContent
 
 
 async def bootstrap(raw_pages):
@@ -10,7 +11,7 @@ async def bootstrap(raw_pages):
     if no_pages:
         return
 
-    today_message_text = await getSummarizedAllDayMessage(pages)
+    today_message_text = getSummarizedAllDayMessageWithPlainContent(pages)
     sendMessageToChannel(text=today_message_text)
 
 

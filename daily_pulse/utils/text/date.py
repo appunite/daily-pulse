@@ -13,10 +13,14 @@ def getSuffixOfDay(day):
 
 
 def getTargetDate():
-    return date.today() + timedelta(days=-1)
+    today = date.today()
+    is_monday = today.weekday() == 0
+    date_delta = -3 if is_monday else -1
+
+    return today + timedelta(days=date_delta)
 
 
-def getFormattedTargetDate(format="%d-%m-%Y", withSuffix=False):
+def getFormattedTargetDate(format="%-d-%m-%Y", withSuffix=False):
     target_date = getTargetDate()
     suffix = getSuffixOfDay(target_date.day) if withSuffix else ""
     return target_date.strftime(format) + suffix

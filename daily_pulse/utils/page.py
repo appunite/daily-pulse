@@ -16,6 +16,7 @@ def getStandarizedPageInfo(pageObject):
         "name": pageObject["properties_value"]["Name"][0]["plain_text"],
         "type": glom(pageObject, "properties_value.Type.name", default=""),
         "status": glom(pageObject, "properties_value.Status.name", default=""),
+        "decision": glom(pageObject, "properties_value.Decision.name", default=""),
     }
 
 
@@ -39,4 +40,8 @@ def getPageWithDocument(pageObject):
         "id": standarized_page["id"],
         "url": standarized_page["url"],
         "document": page_document,
+        "name": standarized_page["name"],
+        "type": standarized_page["type"],
+        "status": standarized_page["status"],
+        "decision": standarized_page["decision"],
     }
