@@ -9,11 +9,23 @@ from daily_pulse.utils.text.markdown import (
 )
 
 
+def getNameElementText(nameElement):
+    plain_text = nameElement["plain_text"]
+
+    if plain_text == "Untitled":
+        return "[no access]"
+
+    return plain_text
+
+
 def getStandarizedPageInfo(pageObject):
+    name = pageObject["properties_value"]["Name"]
+    name_texts = [getNameElementText(name_element) for name_element in name]
+
     return {
         "id": pageObject["id"],
         "url": pageObject["url"],
-        "name": pageObject["properties_value"]["Name"][0]["plain_text"],
+        "name": "".join(name_texts),
         "type": glom(pageObject, "properties_value.Type.name", default=""),
         "status": glom(pageObject, "properties_value.Status.name", default=""),
         "decision": glom(pageObject, "properties_value.Decision.name", default=""),
